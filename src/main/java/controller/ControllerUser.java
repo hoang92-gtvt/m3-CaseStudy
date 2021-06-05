@@ -1,6 +1,12 @@
 package controller;
 
+import model.Book;
+import model.NXB;
 import model.User;
+import service.book.BookService;
+import service.book.IBookService;
+import service.nxb.INXBService;
+import service.nxb.NXBService;
 import service.user.IUserService;
 import service.user.UserService;
 
@@ -9,11 +15,15 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ControllerUser", value = "/user")
 public class ControllerUser extends HttpServlet {
      IUserService userService = new UserService();
+     IBookService bookService = new BookService();
+     INXBService nxbService = new NXBService();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -71,8 +81,14 @@ public class ControllerUser extends HttpServlet {
         dispatcher.forward(request,response);
     }
 
-    private void showRequestCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void showRequestCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/customers.jsp");
+
+        ArrayList<Book> bookList = bookService.findAll();
+        ArrayList<NXB> nxbList = nxbService.findAll();
+        request.setAttribute("bookList", bookList);
+        request.setAttribute("nxbList", nxbList);
+
 
         dispatcher.forward(request,response);
     }
