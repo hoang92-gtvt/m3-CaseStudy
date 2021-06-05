@@ -14,13 +14,14 @@
 </head>
 <body>
 <div><h1> Giao diện khách hàng</h1></div>
+<label>${role}: ${name}</label>
 
 <ul class="nav nav-tabs">
     <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="/book?action=customer">BOOK</a>
     </li>
     <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/phieumuon?action=customer"role="button" aria-expanded="false">PHIEU MUON</a>
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/phieumuon?action=customer&id=${id}" role="button" aria-expanded="false">PHIEU MUON</a>
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Show List</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>

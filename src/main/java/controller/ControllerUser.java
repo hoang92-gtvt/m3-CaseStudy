@@ -30,7 +30,7 @@ public class ControllerUser extends HttpServlet {
 
         int id =0;
         String name = "";
-
+        String role = "";
         try {
             List<User> userList = userService.findAll();
             for (User user:userList ) {
@@ -38,8 +38,11 @@ public class ControllerUser extends HttpServlet {
                     if(user.getPass().equals(pass)){
                         id = user.getId();
                         name = user.getName();
+                        role = user.getRole().getName();
                         request.setAttribute("id", id);
                         request.setAttribute("name", name);
+                        request.setAttribute("role", role);
+
 
                         if(user.getRole().getId()==1||user.getRole().getId()==2){
                             showRequestAdmin(request,response);

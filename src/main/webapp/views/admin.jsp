@@ -14,6 +14,7 @@
 </head>
 <body>
 <h1> Giao diện admin </h1>
+<label>${role}: ${name}</label>
 
 <%--<button ><a href="/book"> BOOK</a></button>--%>
 <%--<button ><a href="/category"> CATEGORY</a></button>--%>

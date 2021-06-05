@@ -163,4 +163,34 @@ public class PhieuMuonService implements IPhieumuonService{
         connection.commit();
 
     }
+
+    @Override
+    public ArrayList<PhieuMuon> getPhieuMuonListByIdOfCustomer(int idOfCustomer) throws SQLException {
+        ArrayList<PhieuMuon> pmList= new ArrayList<>();
+
+        PreparedStatement statement =connection.prepareStatement("select *from phieumuon where user_id=? ;");
+        statement.setInt(1,idOfCustomer);
+        ResultSet result = statement.executeQuery();
+
+        while(result.next()){
+            int id = result.getInt(1);
+            String identity = result.getString(2);
+            String date = result.getString(3);
+            String duedate= result.getString(4);
+
+            int  user_id = result.getInt(5);
+            int  status = result.getInt(6);
+
+            User user = userService.getObjectById(user_id);
+            StatusPM statusPM = statusPMService.getObjectById(status);
+            ArrayList<Book> bookList = bookService.getBookListById(id);
+
+
+            PhieuMuon phieuMuon = new PhieuMuon(id,identity,date,duedate,user,statusPM,bookList);
+            pmList.add(phieuMuon);
+
+        }
+
+        return pmList;
+    }
 }

@@ -47,6 +47,10 @@ public class ControllerPhieuMuon extends HttpServlet {
 
                 case "delete":
                     showFormDelete(request,response);
+
+                case "customer":
+                    showPhieuMuonOfCustomer(request,response);
+
                 default:
                     showAllPhieuMuon(request, response);
                     break;
@@ -55,6 +59,23 @@ public class ControllerPhieuMuon extends HttpServlet {
             e.printStackTrace();
         }
     }
+
+    private void showPhieuMuonOfCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+
+        int idOfCustomer = Integer.parseInt(request.getParameter("id"));
+
+        ArrayList<PhieuMuon> pmList = new ArrayList<>();
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/phieumuons/list_customer.jsp");
+
+        pmList = phieumuonService.getPhieuMuonListByIdOfCustomer(idOfCustomer);
+
+        request.setAttribute("pmList", pmList);
+
+        dispatcher.forward(request, response);
+
+    }
+
     private void showFormDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("phieumuons/delete.jsp");
         dispatcher.forward(request,response);
