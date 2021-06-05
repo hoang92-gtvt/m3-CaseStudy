@@ -48,6 +48,9 @@ public class ControllerBook extends HttpServlet {
 
                 case "delete":
                     showFormDelete(request,response);
+                case "customer":
+                    ShowAllBookForCustomer(request,response);
+
                 default:
                     showAllBook(request, response);
                     break;
@@ -55,6 +58,19 @@ public class ControllerBook extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void ShowAllBookForCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/books/list_customer.jsp");
+
+        ArrayList<Book> bookList = new ArrayList<>();
+
+        bookList = bookService.findAll();
+
+        request.setAttribute("bookList", bookList);
+
+        dispatcher.forward(request, response);
+
     }
 
     private void showFormDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
