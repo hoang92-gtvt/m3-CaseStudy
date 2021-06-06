@@ -24,6 +24,10 @@ public class ControllerUser extends HttpServlet {
      IBookService bookService = new BookService();
      INXBService nxbService = new NXBService();
 
+     public static int id = 0;
+     public static String name = "";
+     public static String role_name = "";
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -60,9 +64,7 @@ public class ControllerUser extends HttpServlet {
         String userName = request.getParameter("userName");
         String pass = request.getParameter("pass");
 
-        int id =0;
-        String name = "";
-        String role = "";
+
         try {
             List<User> userList = userService.findAll();
             for (User user:userList ) {
@@ -70,11 +72,7 @@ public class ControllerUser extends HttpServlet {
                     if(user.getPass().equals(pass)){
                         id = user.getId();
                         name = user.getName();
-                        role = user.getRole().getName();
-                        request.setAttribute("id", id);
-                        request.setAttribute("name", name);
-                        request.setAttribute("role", role);
-
+                        role_name = user.getRole().getName();
 
                         if(user.getRole().getId()==1||user.getRole().getId()==2){
                             showRequestAdmin(request,response);
@@ -106,6 +104,11 @@ public class ControllerUser extends HttpServlet {
     private void showRequestCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/customers.jsp");
 
+        request.setAttribute("id", id);
+        request.setAttribute("name", name);
+        request.setAttribute("role", role_name);
+
+
         ArrayList<Book> bookList = bookService.findAll();
         ArrayList<NXB> nxbList = nxbService.findAll();
         request.setAttribute("bookList", bookList);
@@ -117,6 +120,11 @@ public class ControllerUser extends HttpServlet {
 
     private void showRequestAdmin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin.jsp");
+
+        request.setAttribute("id", id);
+        request.setAttribute("name", name);
+        request.setAttribute("role", role_name);
+
 
         ArrayList<Book> bookList = bookService.findAll();
         ArrayList<NXB> nxbList = nxbService.findAll();

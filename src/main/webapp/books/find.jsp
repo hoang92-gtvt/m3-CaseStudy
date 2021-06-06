@@ -23,7 +23,7 @@
         <input type="text" name= "nameBook" ><br>
         <label>Thể Loại sách</label><br>
         <select name="category_id">
-
+            <option value =""> No choose</option>
             <c:forEach items="${categories}" var="category">
               <option value =${category.id}> ${category.name} </option>
             </c:forEach>

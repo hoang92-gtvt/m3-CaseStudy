@@ -16,7 +16,7 @@
 </head>
 <body>
 <h1> Danh sách Book có trong Thư viện </h1>
-<a href="/book?action=find" class="btn btn-primary" role="button" data-bs-toggle="button">Tìm Kiếm </a>
+<a href="/book?action=find&role_id=2" class="btn btn-primary" role="button" data-bs-toggle="button">Tìm Kiếm </a>
 <a href="/book?action=customer" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Quay trở về</a>
 <a href="/user?action=customer" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Quay trở Home</a>
 <a href="#" class="btn btn-primary disabled" tabindex="-1" aria-disabled="true" role="button" data-bs-toggle="button">None</a>
