@@ -15,7 +15,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 <body>
-<h1> Danh sách Book có trong Thư viện </h1>
+<h1 > Danh sách Book có trong Thư viện </h1>
+<%--<input type="text" name ="role_id" value="1" style="position: fixed; right:0px; top: 0px">--%>
+<a href="/book?action=find&role_id=1" class="btn btn-primary" role="button" data-bs-toggle="button">Tìm Kiếm </a>
+<a href="/book" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Quay trở về</a>
+
+<a href="/user?action=admin" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Quay về Home</a>
+<a href="#" class="btn btn-primary disabled" tabindex="-1" aria-disabled="true" role="button" data-bs-toggle="button">None</a>
 <table class="table table-striped table-hover">
     <tr >
         <td >Tên Sách</td>

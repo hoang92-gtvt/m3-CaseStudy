@@ -26,6 +26,28 @@ public class ControllerUser extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if (action == null){
+            action = "";
+        }
+        try{
+            switch(action){
+                case "admin":
+                    showRequestAdmin(request,response);
+                    break;
+                case "customer":
+                    showRequestCustomer(request,response);
+                    break;
+                default:
+                    backHome(request,response);
+
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+
 
     }
 

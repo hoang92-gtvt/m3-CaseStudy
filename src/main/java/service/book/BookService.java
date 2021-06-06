@@ -4,6 +4,10 @@ import model.Book;
 import model.Category;
 import model.NXB;
 import model.StatusBook;
+import service.book.find.FindByCategory;
+import service.book.find.FindByName;
+import service.book.find.FindByNameAndCategory;
+import service.book.find.IFind;
 import service.category.CategoryService;
 import service.category.ICategoryService;
 import service.connection.ConnectionJDBC;
@@ -12,7 +16,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookService implements IBookService {
+public class BookService extends ABookService implements  IFind {
 
 
     public static final String INSERTINTORELATIVE = "insert into relative(bookID, categoryID) value(?,?)";
@@ -197,4 +201,21 @@ public class BookService implements IBookService {
     }
 
 
+    @Override
+    public ArrayList<Book> findBook(ArrayList<Book> books, String nameBook, int category_id) {
+//        ArrayList<Book> bookList = new ArrayList<>();
+        if(nameBook =="" & category_id!=0){
+             IFind findBook = new FindByCategory();
+             return findBook.findBook(books, nameBook, category_id);
+
+        }else if(nameBook !="" & category_id==0){
+            IFind findBook = new FindByName();
+            return findBook.findBook(books, nameBook, category_id);
+
+        }else if(nameBook !="" & category_id!=0) {
+            IFind findBook = new FindByNameAndCategory();
+            return findBook.findBook(books, nameBook, category_id);
+        }else return null;
+
+    }
 }

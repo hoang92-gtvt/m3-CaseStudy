@@ -60,9 +60,9 @@ public class CategoryService implements ICategoryService{
         ResultSet resultSet= statement.executeQuery();
 
         while(resultSet.next()){
-
-            String  categoryName = resultSet.getString(1);
-            Category category = new Category(categoryName);
+            int category_id = resultSet.getInt(1);
+            String  categoryName = resultSet.getString(2);
+            Category category = new Category(category_id,categoryName);
 
             categories.add(category);
             System.out.println("");

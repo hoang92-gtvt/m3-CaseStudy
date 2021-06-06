@@ -51,7 +51,9 @@
             <%--                <a href="#" class="w3-bar-item w3-button">Link</a>--%>
             <%--            </div>--%>
         </div>
-        <span class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal">${role}: ${name}</span>
+        <span class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal">${role}</span>
+        <span id="user_id"  class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal">${name}</span>
+
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>
 
     </div>

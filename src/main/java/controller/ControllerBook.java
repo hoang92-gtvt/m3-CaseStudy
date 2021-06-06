@@ -4,6 +4,7 @@ import model.Book;
 import model.Category;
 import model.NXB;
 import model.StatusBook;
+import service.book.ABookService;
 import service.book.BookService;
 import service.book.IBookService;
 import service.category.CategoryService;
@@ -23,7 +24,7 @@ import java.util.List;
 
 @WebServlet(name = "ControllerBook", value ="/book")
 public class ControllerBook extends HttpServlet {
-    IBookService bookService = new BookService();
+    ABookService bookService = new BookService();
     ICategoryService categoryService = new CategoryService();
     INXBService nxbService = new NXBService();
     IStatusBookService statusBookService = new StatusBookService();
@@ -48,8 +49,12 @@ public class ControllerBook extends HttpServlet {
 
                 case "delete":
                     showFormDelete(request,response);
+
                 case "customer":
                     ShowAllBookForCustomer(request,response);
+
+                case "find":
+                    ShowFormFind(request,response);
 
                 default:
                     showAllBook(request, response);
@@ -58,6 +63,16 @@ public class ControllerBook extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void ShowFormFind(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/books/find.jsp");
+            ArrayList<Category> categories = categoryService.findAll();
+            request.setAttribute("categories", categories);
+
+
+        dispatcher.forward(request,response);
+
     }
 
     private void ShowAllBookForCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
@@ -147,15 +162,49 @@ public class ControllerBook extends HttpServlet {
 
                 case "delete":
                     delete(request,response);
-//
-            default:
-                showAllBook(request, response);
-                break;
+                    break;
+
+                case "find":
+                    find(request,response);
+
+////
+//            default:
+//                showAllBook(request, response);
+//                break;
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void find(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        String nameBook = request.getParameter("nameBook");
+        String category_str = request.getParameter("category_id");
+        int category_id =0;
+        if(category_str!="") {
+            category_id = Integer.parseInt(category_str);
+
+        }
+
+        ArrayList<Book> books = bookService.findAll();
+        ArrayList<Book> bookList = bookService.findBook(books, nameBook, category_id);
+
+        int role_id = Integer.parseInt(request.getParameter("role_id"));
+        if(role_id==1){
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/books/list.jsp");
+            request.setAttribute("bookList", bookList);
+            dispatcher.forward(request,response);
+
+        }else{
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/books/list_customer.jsp");
+            request.setAttribute("bookList", bookList);
+            dispatcher.forward(request,response);
+
+        }
+
+
     }
 
     private void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, SQLException, IOException {
