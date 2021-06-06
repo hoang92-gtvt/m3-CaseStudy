@@ -93,8 +93,14 @@ public class ControllerUser extends HttpServlet {
         dispatcher.forward(request,response);
     }
 
-    private void showRequestAdmin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void showRequestAdmin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin.jsp");
+
+        ArrayList<Book> bookList = bookService.findAll();
+        ArrayList<NXB> nxbList = nxbService.findAll();
+        request.setAttribute("bookList", bookList);
+        request.setAttribute("nxbList", nxbList);
+
 
         dispatcher.forward(request,response);
 

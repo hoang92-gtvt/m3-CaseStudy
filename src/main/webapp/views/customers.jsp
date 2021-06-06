@@ -40,9 +40,9 @@
         <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
         <a href="/book?action=customer" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>BOOK </a>
         <a href="/phieumuon?action=customer&id=${id}" class="w3-bar-item w3-button w3-hide-small w3-hover-white">PHIEUMUON</a>
-        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white" aria-disabled="true" >USER</a>
-        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white" aria-disabled="true" >NXB</a>
-        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white" aria-disabled="true" >CATEGORY</a>
+<%--        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white" aria-disabled="true" >USER</a>--%>
+<%--        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white" aria-disabled="true" >NXB</a>--%>
+<%--        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white" aria-disabled="true" >CATEGORY</a>--%>
         <div class="w3-dropdown-hover w3-hide-small">
 <%--            <button class="w3-button" title="Notifications">Dropdown <i class="fa fa-caret-down"></i></button>--%>
 <%--            <div class="w3-dropdown-content w3-card-4 w3-bar-block">--%>
@@ -126,16 +126,16 @@
 
 </div>
 
-<!-- Container -->
-<div class="w3-container" style="position:relative">
-    <a onclick="w3_open()" class="w3-button w3-xlarge w3-circle w3-teal"
-       style="position:absolute;top:-28px;right:24px">+</a>
-</div>
+<%--<!-- Container -->--%>
+<%--<div class="w3-container" style="position:relative">--%>
+<%--    <a onclick="w3_open()" class="w3-button w3-xlarge w3-circle w3-teal"--%>
+<%--       style="position:absolute;top:-28px;right:24px">+</a>--%>
+<%--</div>--%>
 
 
 
 
-<img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%;">
+<%--<img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%;">--%>
 
 <!-- Footer -->
 <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
