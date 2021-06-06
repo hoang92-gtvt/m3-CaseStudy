@@ -28,6 +28,16 @@ public class Book {
         this.description = description;
     }
 
+    public Book(int id, String name, String description, NXB nxb, StatusBook statusBook, String urlOfImage, ArrayList<Category> categories) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.nxb = nxb;
+        this.statusBook = statusBook;
+        this.urlOfImage = urlOfImage;
+        this.categories = categories;
+    }
+
     public Book(int id, String name, String description, NXB nxb, StatusBook status, String urlOfImage) {
         this.id = id;
         this.name = name;

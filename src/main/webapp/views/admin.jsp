@@ -92,7 +92,7 @@
     <c:forEach items="${bookList}" var="book" >
         <div class="w3-quarter">
             <div class="w3-card w3-white">
-                <img src="${book.urlOfImage}" alt="Snow" style="width:100% ; height: 300px">
+                <img src="${book.urlOfImage}" alt="Snow" style="width:100% ; height: 300px"/>
                 <div class="w3-container">
                     <h3>${book.name}</h3>
                     <c:forEach items="${book.categories}" var="category">

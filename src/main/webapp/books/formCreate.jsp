@@ -45,10 +45,10 @@
     <div class="mb-3">
         <label  class="form-label">Nhà xuất bản sách </label>
         <br>
-        <select>
+        <select name="nxb">
         <c:forEach items="${nxbList}" var="nxb">
 
-            <option name="nxb" value="${nxb.id}">${nxb.name}</option>
+            <option  value="${nxb.id}">${nxb.name}</option>
 
         </c:forEach>
         </select>
@@ -67,10 +67,10 @@
         <label  class="form-label">Loại sách </label>
         <br>
 
-        <select multiple>
+        <select  name="category" multiple>
         <c:forEach items="${categories}" var="category">
 
-            <option name="category" value="${category.id}"> ${category.name}</option>
+            <option  value="${category.id}"> ${category.name}</option>
 
         </c:forEach>
         </select>

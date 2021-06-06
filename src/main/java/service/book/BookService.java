@@ -131,14 +131,14 @@ public class BookService extends ABookService implements  IFind {
             String description = result.getString(3);
             String status = result.getString(4);
             String nxb = result.getString(5);
-
+            String urlOfImage = result.getString(6);
 
             NXB nxbObject = new NXB(nxb);
             StatusBook statusBook= new StatusBook(status);
 
             ArrayList<Category> categories = (ArrayList<Category>) categoryService.findCategoryByID(idBook);
 
-            Book book = new Book(idBook,nameBook,description ,nxbObject, statusBook, categories );
+            Book book = new Book(idBook,nameBook,description ,nxbObject, statusBook, urlOfImage, categories );
 
             bookList.add(book);
 
