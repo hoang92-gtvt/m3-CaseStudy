@@ -15,6 +15,7 @@
 </head>
 <body>
 <h1> Danh sách Phiếu mượn cho khách</h1>
+<a href="/user?action=customer" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Quay về Home</a>
 <table class="table table-striped table-hover">
     <tr >
         <td >Mã phiếu</td>
