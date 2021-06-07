@@ -1,9 +1,6 @@
 package controller;
 
-import model.Book;
-import model.Category;
-import model.NXB;
-import model.StatusBook;
+import model.*;
 import service.book.ABookService;
 import service.book.BookService;
 import service.book.IBookService;
@@ -29,13 +26,18 @@ public class ControllerBook extends HttpServlet {
     INXBService nxbService = new NXBService();
     IStatusBookService statusBookService = new StatusBookService();
 
+    static User user = ControllerUser.user;
+//    static User user = new ControllerUser().getUserLogin();
+
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        user = ControllerUser.user;
         String action = request.getParameter("action");
         System.out.println(action);
         try {
             if (action == null) {
-                action = "";
+                action = "check";
             }
             switch (action) {
 
@@ -51,13 +53,20 @@ public class ControllerBook extends HttpServlet {
                     showFormDelete(request,response);
 
                 case "customer":
-                    ShowAllBookForCustomer(request,response);
-
-                case "find":
+                    if(user.getRole()!= null){
+                        ShowAllBookForCustomer(request,response);
+                    }
+               case "find":
                     ShowFormFind(request,response);
 
                 default:
-                    showAllBook(request, response);
+                    if (user.getRole()== null){
+                        response.sendRedirect("index.jsp");
+                    } else if (user.getRole().getId()==1 || user.getRole().getId()==2){
+                        showAllBook(request, response);
+                    } else response.sendRedirect("/book?action=customer");
+
+
                     break;
             }
         } catch (Exception e) {
@@ -132,6 +141,8 @@ public class ControllerBook extends HttpServlet {
     }
 
     private void showAllBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("/books/list.jsp");
 
         ArrayList<Book> bookList = new ArrayList<>();

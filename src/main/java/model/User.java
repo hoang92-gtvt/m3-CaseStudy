@@ -12,6 +12,9 @@ public class User {
     private String pass;
     private Role role;
 
+    public User() {
+    }
+
     public User(int id, String name, String birthday, String email, String phone, String urlOfImg, String userName, String pass, Role role) {
         this.id = id;
         this.name = name;

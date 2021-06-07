@@ -20,7 +20,7 @@
         <label>User</label><br>
         <input type="text" name= "userName" placeholder="Tên đăng nhập"><br>
         <label>PassWord</label><br>
-        <input type="text" name= "pass" placeholder="Nhập mật khẩu"><br>
+        <input type="password" name= "pass" placeholder="Nhập mật khẩu"><br>
 
         <button id="id1">Login</button>
     </div>
@@ -39,16 +39,17 @@
     form {
         width: 30%;
         height: 200px;
-        background: violet;
+        background: white;
         position: fixed;
-        left:30%;
-        top : 25%;
-        border-style: solid;
+        left:35%;
+        top : 30%;
+        border-style: hidden;
         border-radius: 5px;
+        opacity: 0.6;
+        filter: alpha(opacity=80);
     }
     div {
-        opacity: 0.5;
-        filter: alpha(opacity=50);
+
         position: absolute;
         left:90px;
         top : 20px;
@@ -61,6 +62,9 @@
 
     input{
         width: 150%;
+    }
+    label{
+        font-weight: bolder;
     }
 
 

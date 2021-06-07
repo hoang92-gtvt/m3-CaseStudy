@@ -26,9 +26,12 @@ public class ControllerPhieuMuon extends HttpServlet {
     IStatusPMService statusPMService = new StatusPMService();
     IBookService bookService = new BookService();
 
+    static User user = ControllerUser.user;
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        user=ControllerUser.user;
         String action = request.getParameter("action");
         System.out.println(action);
         try {
@@ -50,9 +53,16 @@ public class ControllerPhieuMuon extends HttpServlet {
 
                 case "customer":
                     showPhieuMuonOfCustomer(request,response);
+                    break;
 
                 default:
-                    showAllPhieuMuon(request, response);
+                    if(user.getRole()==null){
+                        response.sendRedirect("index.jsp");
+
+                    } else if(user.getRole().getId()==1 || user.getRole().getId()==2 ){
+                        showAllPhieuMuon(request, response);
+                    } else response.sendRedirect("/phieumuon?action=customer");
+
                     break;
             }
         } catch (Exception e) {

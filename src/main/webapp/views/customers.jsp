@@ -52,7 +52,8 @@
 <%--            </div>--%>
         </div>
         <span class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal">${role}: ${name}</span>
-        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>
+        <a href="/user?action=logout" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal">LogOut</a>
+<%--        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>--%>
 
     </div>
 

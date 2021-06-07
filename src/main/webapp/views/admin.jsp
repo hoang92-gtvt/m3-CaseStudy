@@ -43,6 +43,7 @@
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white" aria-disabled="true" >USER</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white" aria-disabled="true" >NXB</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white" aria-disabled="true" >CATEGORY</a>
+
         <div class="w3-dropdown-hover w3-hide-small">
             <%--            <button class="w3-button" title="Notifications">Dropdown <i class="fa fa-caret-down"></i></button>--%>
             <%--            <div class="w3-dropdown-content w3-card-4 w3-bar-block">--%>
@@ -53,8 +54,9 @@
         </div>
         <span class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal">${role}</span>
         <span id="user_id"  class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal">${name}</span>
+        <a href="/user?action=logout" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal">logout</a>
 
-        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>
+<%--        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>--%>
 
     </div>
 
