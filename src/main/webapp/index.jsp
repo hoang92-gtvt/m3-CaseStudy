@@ -47,6 +47,8 @@
         border-radius: 5px;
     }
     div {
+        opacity: 0.5;
+        filter: alpha(opacity=50);
         position: absolute;
         left:90px;
         top : 20px;
