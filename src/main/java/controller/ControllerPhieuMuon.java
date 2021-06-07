@@ -72,7 +72,7 @@ public class ControllerPhieuMuon extends HttpServlet {
 
     private void showPhieuMuonOfCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
 
-        int idOfCustomer = Integer.parseInt(request.getParameter("id"));
+        int idOfCustomer = user.getId();
 
         ArrayList<PhieuMuon> pmList = new ArrayList<>();
 
